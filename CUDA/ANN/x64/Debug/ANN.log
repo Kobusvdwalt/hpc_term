@@ -1,21 +1,19 @@
-﻿  Main.cpp
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\denselayer.h(72): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\denselayer.h(41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\relulayer.h(20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\relulayer.h(27): warning C4305: 'return': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\mselayer.h(19): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\sigmoidlayer.h(18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\sigmoidlayer.h(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+﻿  Compiling CUDA source file kernel.cu...
+  
+  C:\Users\Kobus\Desktop\HPC Term\hpc_term\CUDA\ANN>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin\nvcc.exe" -gencode=arch=compute_35,code=\"sm_35,compute_35\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64" -x cu  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static  -g   -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc141.pdb /FS /Zi /RTC1 /MDd " -o x64\Debug\kernel.cu.obj "C:\Users\Kobus\Desktop\HPC Term\hpc_term\CUDA\ANN\kernel.cu" 
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(146): warning : declaration requires a typedef name
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(160): warning : declaration requires a typedef name
+C:/Users/Kobus/Desktop/HPC Term/hpc_term/CUDA/ANN/kernel.cu(24): warning : variable "threadId" was declared but never referenced
+C:/Users/Kobus/Desktop/HPC Term/hpc_term/CUDA/ANN/kernel.cu(143): warning : variable "error" was declared but never referenced
+C:/Users/Kobus/Desktop/HPC Term/hpc_term/CUDA/ANN/kernel.cu(72): warning : variable "lc" was declared but never referenced
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(146): warning : declaration requires a typedef name
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(160): warning : declaration requires a typedef name
+  kernel.cu
   device_functions.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\dropoutgpu.h(9): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(9): warning C4018: '<': signed/unsigned mismatch
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(10): warning C4018: '<': signed/unsigned mismatch
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(66): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(71): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(182): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(185): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(190): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(202): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(247): warning C4305: '*=': truncation from 'double' to 'float'
-  ANN.vcxproj -> C:\Users\Kobus\Desktop\HPC Term\hpc_term\CUDA\x64\Debug\ANN.exe
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(134): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(46): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(50): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(54): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\GPUData.h(69): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  ANN.vcxproj -> C:\Users\Kobus\Desktop\HPC Term\hpc_term\CUDA\x64\Debug\ANN_CUDA.exe

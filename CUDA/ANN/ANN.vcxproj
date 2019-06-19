@@ -25,6 +25,7 @@
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <CudaToolkitCustomDir>
     </CudaToolkitCustomDir>
+    <ProjectName>ANN_CUDA</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -132,7 +133,6 @@
     <ClInclude Include="CudaLibs.h" />
     <ClInclude Include="DropoutGPU.h" />
     <ClInclude Include="GPUData.h" />
-    <ClInclude Include="DenseLayer.h" />
     <CudaCompile Include="DenseGPU.cu" />
     <CudaCompile Include="DenseGPU.h">
       <FileType>Document</FileType>
@@ -140,11 +140,8 @@
     </CudaCompile>
     <ClInclude Include="kernel.h" />
     <ClInclude Include="Main.h" />
-    <ClInclude Include="MSELayer.h" />
     <ClInclude Include="MSELossGPU.h" />
-    <ClInclude Include="ReluLayer.h" />
     <ClInclude Include="ReluGPU.h" />
-    <ClInclude Include="SigmoidLayer.h" />
     <ClInclude Include="SigmoidGPU.h" />
     <CudaCompile Include="DropoutGPU.cu" />
     <CudaCompile Include="MSELossGPU.cu" />

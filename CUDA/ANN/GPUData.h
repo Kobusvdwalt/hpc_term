@@ -1,10 +1,6 @@
 #pragma once
 #include <stdio.h>
 #include <cuda.h>
-#include "DenseLayer.h"
-#include "MSELayer.h"
-#include "ReluLayer.h"
-#include "SigmoidLayer.h"
 
 typedef struct Network {
 	// Manual initialization	

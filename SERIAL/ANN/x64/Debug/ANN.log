@@ -1,0 +1,15 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (ANN.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Main.cpp
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\dense.h(72): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\dense.h(41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\relu.h(20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\relu.h(27): warning C4305: 'return': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\mseloss.h(19): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\sigmoid.h(18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\sigmoid.h(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(9): warning C4018: '<': signed/unsigned mismatch
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(10): warning C4018: '<': signed/unsigned mismatch
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(66): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(71): warning C4305: 'argument': truncation from 'double' to 'float'
+  ANN.vcxproj -> C:\Users\Kobus\Desktop\HPC Term\hpc_term\SERIAL\x64\Debug\ANN_SERIAL.exe

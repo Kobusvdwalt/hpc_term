@@ -47,7 +47,11 @@ int FindMax(float* set, int count) {
 	return max;
 }
 
-void TrainCPU(int width, int height, int trainCount, int testCount) {	
+void CheckCudaM(cudaError_t ce) {
+	//printf("%s\n", cudaGetErrorString(ce));
+}
+
+void TrainGPU(int width, int height, int trainCount, int testCount) {
 	//load training data
 	float** trainImages = new float*[trainCount];
 	float** trainLabels = new float*[trainCount];
@@ -59,102 +63,6 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 	float** testLabels = new float*[testCount];
 	LoadImageData("../../DATASET/digits28/test/", width, height, testCount, testImages);
 	LoadLabelData("../../DATASET/digits28/test/", testCount, testLabels);
-
-	// Layer 1
-	DenseLayer* d1 = new DenseLayer(width*height, 256);
-	ReluLayer* r1 = new ReluLayer(256);
-	d1->Initialize(0.01, 0);
-
-	// Layer 2
-	DenseLayer* d2 = new DenseLayer(256, 64);
-	ReluLayer* r2 = new ReluLayer(64);
-	d2->Initialize(0.01, 0);
-
-	// Layer 3
-	DenseLayer* d3 = new DenseLayer(64, 10);	
-	SigmoidLayer* s = new SigmoidLayer(10);
-	d3->Initialize(2, -1);
-
-	MSELossLayer* mse = new MSELossLayer(10);
-
-	int imageSample = 0;
-	double mseSum = 0;
-
-	for (int e = 0; e < 20; e++) {
-		mseSum = 0;
-		std::clock_t c_start = std::clock();
-		for (int i = 0; i < trainCount; i++) {
-			imageSample = rand() % trainCount;
-			d1->Forward(trainImages[imageSample]);
-			r1->Forward(d1->output);
-
-			d2->Forward(r1->output);
-			r2->Forward(d2->output);
-
-			d3->Forward(r2->output);
-			s->Forward(d3->output);
-
-			mse->CalculateLoss(s->output, trainLabels[imageSample]);
-
-			s->Backward(mse->gradient);
-			d3->Backward(s->gradient);
-
-			r2->Backward(d3->gradient);
-			d2->Backward(r2->gradient);
-
-			r1->Backward(d2->gradient);
-			d1->Backward(r1->gradient);
-
-			d1->UpdateWeights();
-			d2->UpdateWeights();
-			d3->UpdateWeights();
-
-			mseSum += mse->errorSum;
-		}
-		std::clock_t c_end = std::clock();
-		double milliseconds = 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC;
-
-		printf("Epoch : %d\n", e);
-		printf("Train Error : %lf\n", mseSum/trainCount);
-		printf("Time : %lf\n", milliseconds);
-
-		mseSum = 0;
-		for (int i = 0; i < testCount; i++) {
-			imageSample = i;
-			d1->Forward(testImages[imageSample]);
-			r1->Forward(d1->output);
-
-			d2->Forward(r1->output);
-			r2->Forward(d2->output);
-
-			d3->Forward(r2->output);
-			s->Forward(d3->output);
-
-			if (FindMax(testLabels[imageSample], 10) != FindMax(s->output, 10)) {
-				mseSum += 1.0;
-			}
-
-		}
-		printf("Test Error : %.2lf\n\n", (mseSum / testCount)*100);
-	}
-}
-
-void CheckCudaM(cudaError_t ce) {
-	//printf("%s\n", cudaGetErrorString(ce));
-}
-
-void TrainGPU(int width, int height, int trainCount, int testCount) {
-	//load training data
-	float** trainImages = new float*[trainCount];
-	float** trainLabels = new float*[trainCount];
-	LoadImageData("./data/digits28/train/", width, height, trainCount, trainImages);
-	LoadLabelData("./data/digits28/train/", trainCount, trainLabels);
-
-	//load testing data
-	float** testImages = new float*[testCount];
-	float** testLabels = new float*[testCount];
-	LoadImageData("./data/digits28/test/", width, height, testCount, testImages);
-	LoadLabelData("./data/digits28/test/", testCount, testLabels);
 
 	float** trainImagesGPU = new float*[trainCount];
 	float** trainLabelsGPU = new float*[trainCount];
@@ -282,7 +190,7 @@ void TrainGPU(int width, int height, int trainCount, int testCount) {
 }
 
 int main(int argc, char **argv) {
-	TrainCPU(28, 28, 6000, 1000);
+	TrainGPU(28, 28, 6000, 1000);
 	
 	printf("End\n");
 	return 0;
