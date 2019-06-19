@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\DistributedCUDA">
+      <UniqueIdentifier>{5b8266a7-c44c-4bdd-88e8-0c9dd6ae356e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CPU">
+      <UniqueIdentifier>{0d7a52e6-5af7-4db7-a468-2de9c867263e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GPU">
+      <UniqueIdentifier>{de0294c1-5919-4135-b908-ad838e2da68f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel.h">
+      <Filter>Header Files\DistributedCUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="GPUData.h">
+      <Filter>Header Files\DistributedCUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="DenseLayer.h">
+      <Filter>Header Files\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="MSELayer.h">
+      <Filter>Header Files\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="SigmoidLayer.h">
+      <Filter>Header Files\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="ReluLayer.h">
+      <Filter>Header Files\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="CudaLibs.h">
+      <Filter>Header Files\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="MSELossGPU.h">
+      <Filter>Header Files\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="ReluGPU.h">
+      <Filter>Header Files\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="SigmoidGPU.h">
+      <Filter>Header Files\GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="DropoutGPU.h">
+      <Filter>Header Files\GPU</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu">
+      <Filter>Header Files\DistributedCUDA</Filter>
+    </CudaCompile>
+    <CudaCompile Include="DenseGPU.h">
+      <Filter>Header Files\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="DenseGPU.cu">
+      <Filter>Header Files\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="MSELossGPU.cu">
+      <Filter>Header Files\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="SigmoidGPU.cu">
+      <Filter>Header Files\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="ReluGPU.cu">
+      <Filter>Header Files\GPU</Filter>
+    </CudaCompile>
+    <CudaCompile Include="DropoutGPU.cu">
+      <Filter>Header Files\GPU</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>
