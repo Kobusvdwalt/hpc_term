@@ -2,24 +2,16 @@
 This project contains 3 implementations of a Fully Connected Neural Network.
 
 SERIAL
-- The serial implementation was built in Visual Studio and is structed as a Visual Studio 
-  solution. To build and run this code you need to open the solution and compile it with
-  visual studio.
+- The serial implementation was built in Visual Studio and is structed as a Visual Studio solution. To build and run this code you need to open the solution and compile it with visual studio.
 
 CUDA
-- The CUDA implementation was also built in Visual Studio and is also structed as a Visual Studio 
-  solution. To build and run this code you need to open the solution and compile it with
-  visual studio. You also need to have the CUDA sdk installed.
+- The CUDA implementation was also built in Visual Studio and is also structed as a Visual Studio solution. To build and run this code you need to open the solution and compile it with visual studio. You also need to have the CUDA sdk installed.
 
 MPI
-- The MPI implementation was build with mpich on linux. A make file is included to compile the   code. A run script is incuded to run the code.
+- The MPI implementation was build with mpich on linux. A make file is included to compile the code. A run script is incuded to run the code.
 
 Note : 
-- We used Visual Studio for the SERIAL and CUDA implementations but when we tried to use 
-  the Open MPI solutions for windows we experienced difficulties. When we tried to port the CUDA
-  code to run on linux we also experienced problems where linux did not want to regognize the GPU
-  and thus could not execute the CUDA commands. Thus we settled on this project structure, with
-  the SERIAL and CUDA implementations built in Visual Studio on Windows. And the MPI   implementation being built with a simple text editor and the mpicc compiler on Linux.
+- We used Visual Studio for the SERIAL and CUDA implementations but when we tried to use the Open MPI solutions for windows we experienced difficulties. When we tried to port the CUDA code to run on linux we also experienced problems where linux did not want to regognize the GPU and thus could not execute the CUDA commands. Thus we settled on this project structure, with the SERIAL and CUDA implementations built in Visual Studio on Windows. And the MPI  implementation being built with a simple text editor and the mpicc compiler on Linux.
 
 
 The first implementation is a serial implementation which was used as the benchmark
