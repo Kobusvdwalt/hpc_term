@@ -9,8 +9,8 @@ public:
 	int inputWidth = 0;
 	int outputWidth = 0;
 
-	float** weights = NULL;
-	float** weightErrors = NULL;
+	float* weights = NULL;
+	float* weightErrors = NULL;
 
 	float* biases = NULL;
 	float* biasErrors = NULL;
@@ -24,15 +24,11 @@ public:
 	}
 
 	void Initialize(float multiplier, float offset) {
-		weights = new float*[inputWidth];
-		weightErrors = new float*[inputWidth];
-		for (int i = 0; i < inputWidth; i++) {
-			weights[i] = new float[outputWidth];
-			weightErrors[i] = new float[inputWidth];
-			for (int o = 0; o < outputWidth; o++) {
-				weights[i][o] = ((float)rand() / RAND_MAX) * multiplier + offset;
-				weightErrors[i][o] = 0;
-			}
+		weights = new float[inputWidth * outputWidth];
+		weightErrors = new float[inputWidth * outputWidth];
+		for (int i = 0; i < inputWidth * outputWidth; i++) {
+			weights[i] = ((float)rand() / RAND_MAX) * multiplier + offset;
+			weightErrors[i] = 0;
 		}
 
 		biases = new float[outputWidth];
@@ -47,7 +43,7 @@ public:
 		for (int o = 0; o < outputWidth; o++) {
 			float sum = 0;
 			for (int i = 0; i < inputWidth; i++) {
-				sum += input[i] * weights[i][o];
+				sum += input[i] * weights[inputWidth * o + i];
 			}
 
 			output[o] = sum + biases[o];
@@ -58,8 +54,8 @@ public:
 		for (int i = 0; i < inputWidth; i++) {
 			float sum = 0;
 			for (int o = 0; o < outputWidth; o++) {
-				weightErrors[i][o] += inputRef[i] * upstreamGradient[o];
-				sum += weights[i][o] * upstreamGradient[o];
+				weightErrors[inputWidth * o + i] += inputRef[i] * upstreamGradient[o];
+				sum += weights[inputWidth * o + i] * upstreamGradient[o];
 			}
 			gradient[i] = sum;
 		}
@@ -71,11 +67,9 @@ public:
 
 	float learningRate = 0.01;
 	void UpdateWeights() {
-		for (int i = 0; i < inputWidth; i ++) {
-			for (int o = 0; o < outputWidth; o++) {
-				weights[i][o] -= weightErrors[i][o] * learningRate;
-				weightErrors[i][o] = 0;
-			}
+		for (int i = 0; i < inputWidth * outputWidth; i ++) {
+			weights[i] -= weightErrors[i] * learningRate;
+			weightErrors[i] = 0;
 		}
 		for (int o = 0; o < outputWidth; o++) {
 			biases[o] -= biasErrors[o] * learningRate;
