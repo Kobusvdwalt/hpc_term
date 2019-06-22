@@ -1,0 +1,14 @@
+﻿  Main.cpp
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\dense.h(72): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\dense.h(41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\relu.h(20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\relu.h(27): warning C4305: 'return': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\sigmoid.h(18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\sigmoid.h(22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\mseloss.h(19): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(9): warning C4018: '<': signed/unsigned mismatch
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(10): warning C4018: '<': signed/unsigned mismatch
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(98): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(103): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(114): error C3861: 'TrainSwarm': identifier not found

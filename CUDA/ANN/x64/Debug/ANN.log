@@ -1,1 +1,12 @@
-﻿  ANN.vcxproj -> C:\Users\Kobus\Desktop\HPC Term\hpc_term\CUDA\x64\Debug\ANN_CUDA.exe
+﻿  Main.cpp
+  device_functions.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\dropoutgpu.h(9): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(9): warning C4018: '<': signed/unsigned mismatch
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(10): warning C4018: '<': signed/unsigned mismatch
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(90): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(93): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(98): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(110): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\cuda\ann\main.cpp(155): warning C4305: '*=': truncation from 'double' to 'float'
+  ANN.vcxproj -> C:\Users\Kobus\Desktop\HPC Term\hpc_term\CUDA\x64\Debug\ANN_CUDA.exe

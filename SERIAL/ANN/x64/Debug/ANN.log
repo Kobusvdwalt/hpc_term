@@ -12,4 +12,6 @@ c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(10): warning C4018:
 c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(66): warning C4305: 'argument': truncation from 'double' to 'float'
 c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(71): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(76): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\serial\ann\main.cpp(81): warning C4305: 'argument': truncation from 'double' to 'float'
   ANN.vcxproj -> C:\Users\Kobus\Desktop\HPC Term\hpc_term\SERIAL\x64\Debug\ANN_SERIAL.exe

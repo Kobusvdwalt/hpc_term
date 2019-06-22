@@ -1,0 +1,94 @@
+Load image data.
+Load label data.
+Load image data.
+Load label data.
+Epoch : 0
+Train Error : 0.360323
+Time : 433451.000000
+Test Error : 17.86
+
+Epoch : 1
+Train Error : 0.070831
+Time : 433778.000000
+Test Error : 6.25
+
+Epoch : 2
+Train Error : 0.038854
+Time : 426814.000000
+Test Error : 5.11
+
+Epoch : 3
+Train Error : 0.027474
+Time : 447799.000000
+Test Error : 3.89
+
+Epoch : 4
+Train Error : 0.021180
+Time : 436618.000000
+Test Error : 3.84
+
+Epoch : 5
+Train Error : 0.017369
+Time : 463565.000000
+Test Error : 3.84
+
+Epoch : 6
+Train Error : 0.015549
+Time : 463486.000000
+Test Error : 3.24
+
+Epoch : 7
+Train Error : 0.012401
+Time : 492746.000000
+Test Error : 3.61
+
+Epoch : 8
+Train Error : 0.011463
+Time : 490881.000000
+Test Error : 3.23
+
+Epoch : 9
+Train Error : 0.009119
+Time : 475405.000000
+Test Error : 2.87
+
+Epoch : 10
+Train Error : 0.008490
+Time : 479385.000000
+Test Error : 3.26
+
+Epoch : 11
+Train Error : 0.006587
+Time : 502978.000000
+Test Error : 2.64
+
+Epoch : 12
+Train Error : 0.006514
+Time : 513714.000000
+Test Error : 2.75
+
+Epoch : 13
+Train Error : 0.005207
+Time : 508880.000000
+Test Error : 2.57
+
+Epoch : 14
+Train Error : 0.005499
+Time : 521563.000000
+Test Error : 3.11
+
+Epoch : 15
+Train Error : 0.004611
+Time : 517939.000000
+Test Error : 2.51
+
+Epoch : 16
+Train Error : 0.004287
+Time : 534346.000000
+Test Error : 2.77
+
+Epoch : 17
+Train Error : 0.004350
+Time : 2384791.000000
+Test Error : 2.96
+

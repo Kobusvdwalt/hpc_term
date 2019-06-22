@@ -1,0 +1,124 @@
+Load image data.
+Load label data.
+Load image data.
+Load label data.
+Epoch : 0
+Train Error : 0.103824
+Time : 246906.796875
+Learning rate : 0.010000
+Test Error : 7.01
+
+Epoch : 1
+Train Error : 0.048807
+Time : 247710.187500
+Learning rate : 0.009000
+Test Error : 4.90
+
+Epoch : 2
+Train Error : 0.036427
+Time : 248235.875000
+Learning rate : 0.008100
+Test Error : 3.78
+
+Epoch : 3
+Train Error : 0.027891
+Time : 248229.593750
+Learning rate : 0.007290
+Test Error : 3.67
+
+Epoch : 4
+Train Error : 0.023991
+Time : 248260.375000
+Learning rate : 0.006561
+Test Error : 3.34
+
+Epoch : 5
+Train Error : 0.019740
+Time : 248247.812500
+Learning rate : 0.005905
+Test Error : 3.04
+
+Epoch : 6
+Train Error : 0.017618
+Time : 248266.968750
+Learning rate : 0.005314
+Test Error : 2.55
+
+Epoch : 7
+Train Error : 0.015761
+Time : 248271.312500
+Learning rate : 0.004783
+Test Error : 2.83
+
+Epoch : 8
+Train Error : 0.013689
+Time : 248269.078125
+Learning rate : 0.004305
+Test Error : 2.73
+
+Epoch : 9
+Train Error : 0.012308
+Time : 248315.812500
+Learning rate : 0.003874
+Test Error : 2.73
+
+Epoch : 10
+Train Error : 0.010347
+Time : 248316.031250
+Learning rate : 0.003487
+Test Error : 2.68
+
+Epoch : 11
+Train Error : 0.009550
+Time : 248303.640625
+Learning rate : 0.003138
+Test Error : 2.62
+
+Epoch : 12
+Train Error : 0.009794
+Time : 248303.984375
+Learning rate : 0.002824
+Test Error : 2.37
+
+Epoch : 13
+Train Error : 0.008887
+Time : 248313.343750
+Learning rate : 0.002542
+Test Error : 2.54
+
+Epoch : 14
+Train Error : 0.008284
+Time : 248280.265625
+Learning rate : 0.002288
+Test Error : 2.47
+
+Epoch : 15
+Train Error : 0.008128
+Time : 248296.578125
+Learning rate : 0.002059
+Test Error : 2.49
+
+Epoch : 16
+Train Error : 0.007177
+Time : 248321.437500
+Learning rate : 0.001853
+Test Error : 2.45
+
+Epoch : 17
+Train Error : 0.006604
+Time : 248282.578125
+Learning rate : 0.001668
+Test Error : 2.41
+
+Epoch : 18
+Train Error : 0.006535
+Time : 248316.546875
+Learning rate : 0.001501
+Test Error : 2.49
+
+Epoch : 19
+Train Error : 0.006717
+Time : 248314.343750
+Learning rate : 0.001351
+Test Error : 2.55
+

@@ -66,14 +66,24 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 	d1->Initialize(0.01, 0);
 
 	// Layer 2
-	Dense* d2 = new Dense(256, 64);
-	Relu* r2 = new Relu(64);
+	Dense* d2 = new Dense(256, 256);
+	Relu* r2 = new Relu(256);
 	d2->Initialize(0.01, 0);
 
 	// Layer 3
-	Dense* d3 = new Dense(64, 10);	
+	Dense* d3 = new Dense(256, 256);
+	Relu* r3 = new Relu(256);
+	d3->Initialize(0.01, 0);
+
+	// Layer 4
+	Dense* d4 = new Dense(256, 256);
+	Relu* r4 = new Relu(256);
+	d4->Initialize(0.01, 0);
+
+	// Layer 5
+	Dense* d5 = new Dense(256, 10);
 	Sigmoid* s = new Sigmoid(10);
-	d3->Initialize(2, -1);
+	d5->Initialize(2, -1);
 
 	MSELoss* mse = new MSELoss(10);
 
@@ -92,12 +102,24 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 			r2->Forward(d2->output);
 
 			d3->Forward(r2->output);
-			s->Forward(d3->output);
+			r3->Forward(d3->output);
+
+			d4->Forward(r3->output);
+			r4->Forward(d4->output);
+
+			d5->Forward(r4->output);
+			s->Forward(d5->output);
 
 			mse->CalculateLoss(s->output, trainLabels[imageSample]);
 
 			s->Backward(mse->gradient);
-			d3->Backward(s->gradient);
+			d5->Backward(s->gradient);
+
+			r4->Backward(d5->gradient);
+			d4->Backward(r4->gradient);
+
+			r3->Backward(d4->gradient);
+			d3->Backward(r3->gradient);
 
 			r2->Backward(d3->gradient);
 			d2->Backward(r2->gradient);
@@ -108,6 +130,8 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 			d1->UpdateWeights();
 			d2->UpdateWeights();
 			d3->UpdateWeights();
+			d4->UpdateWeights();
+			d5->UpdateWeights();
 
 			mseSum += mse->errorSum;
 		}
@@ -128,7 +152,13 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 			r2->Forward(d2->output);
 
 			d3->Forward(r2->output);
-			s->Forward(d3->output);
+			r3->Forward(d3->output);
+
+			d4->Forward(r3->output);
+			r4->Forward(d4->output);
+
+			d5->Forward(r4->output);
+			s->Forward(d5->output);
 
 			if (FindMax(testLabels[imageSample], 10) != FindMax(s->output, 10)) {
 				mseSum += 1.0;
@@ -141,7 +171,7 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 
 
 int main(int argc, char **argv) {
-	TrainCPU(28, 28, 6000, 1000);
+	TrainCPU(28, 28, 60000, 10000);
 	
 	printf("End\n");
 	return 0;
