@@ -56,8 +56,8 @@ int main(int argc, char *argv[]) {
     printf("P count : %d\n", proccessCount);
     printf("This rank : %d\n", processId);
     
-	int trainCount = 10;
-	int testCount = 1000;
+	int trainCount = 60000;
+	int testCount = 10000;
 	int width = 28;
 	int height = 28;
 	
@@ -90,6 +90,8 @@ int main(int argc, char *argv[]) {
 		MPI_Bcast(trainImages[i], width*height, MPI_FLOAT, 0, MPI_COMM_WORLD);
 		MPI_Bcast(trainLabels[i], 10, MPI_FLOAT, 0, MPI_COMM_WORLD);
 	}
+
+	srand (processId);
 	
 	// Create network
 	// Layer 1
@@ -106,59 +108,110 @@ int main(int argc, char *argv[]) {
 	Dense* d3 = new Dense(64, 10);
 	Sigmoid* s = new Sigmoid(10);
 	d3->Initialize(2, -1);
+
+	MSELoss* mse = new MSELoss(10);
+
+    int imageSample = 0;
+	double mseSum = 0;
 	
-	// Train loop
-	
-	for (int me = 0; me < 10; me ++) {
+	// Train loop	
+	for (int me = 0; me < 50; me ++) {
+		std::clock_t c_start = std::clock();
+
 		// Train
-		TrainSwarm(width, height, trainImages, trainLabels, trainCount, testImages, testLabels, testCount);
+		mseSum = 0;
+		for (int i = 0; i < trainCount/proccessCount; i++) {
+			imageSample = rand() % trainCount;
+			d1->Forward(trainImages[imageSample]);
+			r1->Forward(d1->output);
 
-		float* weightTemp_d1 = new float[d1->inputWidth * d1->outputWidth];
-		float* weightTemp_d2 = new float[d2->inputWidth * d2->outputWidth];
-		float* weightTemp_d3 = new float[d3->inputWidth * d3->outputWidth];
+			d2->Forward(r1->output);
+			r2->Forward(d2->output);
 
-		float* weightNew_d1 = new float[d1->inputWidth * d1->outputWidth];
-		float* weightNew_d2 = new float[d2->inputWidth * d2->outputWidth];
-		float* weightNew_d3 = new float[d3->inputWidth * d3->outputWidth];
+			d3->Forward(r2->output);
+			s->Forward(d3->output);
 
-		// Collect network paramaters
+			mse->CalculateLoss(s->output, trainLabels[imageSample]);
+
+			s->Backward(mse->gradient);
+			d3->Backward(s->gradient);
+
+			r2->Backward(d3->gradient);
+			d2->Backward(r2->gradient);
+
+			r1->Backward(d2->gradient);
+			d1->Backward(r1->gradient);
+
+			d1->UpdateWeights();
+			d2->UpdateWeights();
+			d3->UpdateWeights();
+
+			mseSum += mse->errorSum;
+		}
+
+		MPI_Barrier(MPI_COMM_WORLD);
+
+		// Info
+		std::clock_t c_end = std::clock();
+		double milliseconds = 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC;
 		if (processId == 0) {
-			
-			for (int i=1; i < proccessCount; i ++) {
-				// Receive weight from node
-				MPI_Recv(weightTemp_d1, d1->inputWidth * d1->outputWidth, MPI_FLOAT, i, 0, MPI_COMM_WORLD,  MPI_STATUS_IGNORE);
-				MPI_Recv(weightTemp_d2, d2->inputWidth * d2->outputWidth, MPI_FLOAT, i, 0, MPI_COMM_WORLD,  MPI_STATUS_IGNORE);
-				MPI_Recv(weightTemp_d3, d3->inputWidth * d3->outputWidth, MPI_FLOAT, i, 0, MPI_COMM_WORLD,  MPI_STATUS_IGNORE);
+			printf("Epoch : %d\n", me);
+			printf("Train Error : %lf\n", mseSum/trainCount);
+			printf("Time : %lf\n", milliseconds);
+		}		
 
-				// 
+		// Test
+		if (processId == 0) {
+			mseSum = 0;
+			for (int i = 0; i < testCount; i++) {
+				imageSample = i;
+				d1->Forward(testImages[imageSample]);
+				r1->Forward(d1->output);
+
+				d2->Forward(r1->output);
+				r2->Forward(d2->output);
+
+				d3->Forward(r2->output);
+				s->Forward(d3->output);
+
+				if (FindMax(testLabels[imageSample], 10) != FindMax(s->output, 10)) {
+					mseSum += 1.0;
+				}
 			}
-			
-
-		} else {
-			MPI_Send(d1->weights, d1->inputWidth * d1->outputWidth, MPI_FLOAT, 0, 0, MPI_COMM_WORLD);
-			MPI_Send(d2->weights, d2->inputWidth * d2->outputWidth, MPI_FLOAT, 0, 0, MPI_COMM_WORLD);
-			MPI_Send(d3->weights, d3->inputWidth * d3->outputWidth, MPI_FLOAT, 0, 0, MPI_COMM_WORLD);
+			printf("Test Error : %.2lf\n\n", (mseSum / testCount)*100);	
 		}
+
+		MPI_Barrier(MPI_COMM_WORLD);
+
+		// Sum network paramaters
+		float* tempWeightsD1 = new float[d1->inputWidth * d1->outputWidth];
+		float* tempBiasesD1 = new float[d1->outputWidth];
+
+		float* tempWeightsD2 = new float[d2->inputWidth * d2->outputWidth];
+		float* tempBiasesD2 = new float[d2->outputWidth];
+
+		float* tempWeightsD3 = new float[d3->inputWidth * d3->outputWidth];
+		float* tempBiasesD3 = new float[d3->outputWidth];
+
+		MPI_Allreduce(d1->weights, tempWeightsD1, d1->inputWidth * d1->outputWidth, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+		MPI_Allreduce(d1->biases, tempBiasesD1, d1->outputWidth, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 		
+		MPI_Allreduce(d2->weights, tempWeightsD2, d2->inputWidth * d2->outputWidth, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+		MPI_Allreduce(d2->biases, tempBiasesD2, d2->outputWidth, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
-		// Distribute network update
-	}
+		MPI_Allreduce(d3->weights, tempWeightsD3, d3->inputWidth * d3->outputWidth, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+		MPI_Allreduce(d3->biases, tempBiasesD3, d3->outputWidth, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
-/*
-	if (processId == 1) {
-		for (int i = 0; i < 784; i ++) {
-			float val = trainImages[9][i];
-			if (val < 0.1) {
-				printf("     ");
-			} else {
-				printf("%.2lf ", val);
-			}
-			if (i % 28 == 0) {
-				printf("\n");
-			}
-		}
+		// Average paramaters
+		for (int i=0; i < d1->inputWidth * d1->outputWidth; i ++) d1->weights[i] = tempWeightsD1[i] / (float)proccessCount;
+		for (int i=0; i < d1->outputWidth; i ++) d1->biases[i] = tempBiasesD1[i] / (float)proccessCount;
+
+		for (int i=0; i < d2->inputWidth * d2->outputWidth; i ++) d2->weights[i] = tempWeightsD2[i] / (float)proccessCount;
+		for (int i=0; i < d2->outputWidth; i ++) d2->biases[i] = tempBiasesD2[i] / (float)proccessCount;
+
+		for (int i=0; i < d3->inputWidth * d3->outputWidth; i ++) d3->weights[i] = tempWeightsD3[i] / (float)proccessCount;
+		for (int i=0; i < d3->outputWidth; i ++) d3->biases[i] = tempBiasesD3[i] / (float)proccessCount;
 	}
- */
 
    MPI_Finalize();
    printf("Test1\n");
