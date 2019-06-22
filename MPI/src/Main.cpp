@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
     printf("This rank : %d\n", processId);
     
 	int trainCount = 60000;
-	int testCount = 1000;
+	int testCount = 10000;
 	int width = 28;
 	int height = 28;
 	
