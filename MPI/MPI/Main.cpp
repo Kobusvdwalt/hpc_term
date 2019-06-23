@@ -68,10 +68,10 @@ int main(int argc, char *argv[]) {
 
 	if (processId == 0) {		
 		// Load data from disk
-		LoadImageData("../DATASET/digits28/train/", width, height, trainCount, trainImages);
-		LoadLabelData("../DATASET/digits28/train/", trainCount, trainLabels);
-		LoadImageData("../DATASET/digits28/test/", width, height, testCount, testImages);
-		LoadLabelData("../DATASET/digits28/test/", testCount, testLabels);
+		LoadImageData("../../DATASET/digits28/train/", width, height, trainCount, trainImages);
+		LoadLabelData("../../DATASET/digits28/train/", trainCount, trainLabels);
+		LoadImageData("../../DATASET/digits28/test/", width, height, testCount, testImages);
+		LoadLabelData("../../DATASET/digits28/test/", testCount, testLabels);
 	} else {
 		// Allocate memory
 		for (int i=0; i < trainCount; i ++) {
