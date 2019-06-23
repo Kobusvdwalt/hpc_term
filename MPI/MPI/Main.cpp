@@ -55,6 +55,7 @@ int main(int argc, char *argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &processId);
     printf("P count : %d\n", proccessCount);
     printf("This rank : %d\n", processId);
+
     
 	int trainCount = 60000;
 	int testCount = 10000;
@@ -95,17 +96,17 @@ int main(int argc, char *argv[]) {
 	
 	// Create network
 	// Layer 1
-	Dense* d1 = new Dense(width*height, 256);
-	Relu* r1 = new Relu(256);
+	Dense* d1 = new Dense(width*height, 1024);
+	Relu* r1 = new Relu(1024);
 	d1->Initialize(0.01, 0);
 
 	// Layer 2
-	Dense* d2 = new Dense(256, 64);
-	Relu* r2 = new Relu(64);
+	Dense* d2 = new Dense(1024, 512);
+	Relu* r2 = new Relu(512);
 	d2->Initialize(0.01, 0);
 
 	// Layer 3
-	Dense* d3 = new Dense(64, 10);
+	Dense* d3 = new Dense(512, 10);
 	Sigmoid* s = new Sigmoid(10);
 	d3->Initialize(2, -1);
 
@@ -115,7 +116,7 @@ int main(int argc, char *argv[]) {
 	double mseSum = 0;
 	
 	// Train loop	
-	for (int me = 0; me < 50; me ++) {
+	for (int me = 0; me < 20; me ++) {
 		std::clock_t c_start = std::clock();
 
 		// Train
@@ -154,7 +155,7 @@ int main(int argc, char *argv[]) {
 		// Info
 		std::clock_t c_end = std::clock();
 		double milliseconds = 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC;
-		if (processId == 0) {
+		if (true) {
 			printf("Epoch : %d\n", me);
 			printf("Train Error : %lf\n", mseSum/trainCount);
 			printf("Time : %lf\n", milliseconds);
@@ -211,6 +212,14 @@ int main(int argc, char *argv[]) {
 
 		for (int i=0; i < d3->inputWidth * d3->outputWidth; i ++) d3->weights[i] = tempWeightsD3[i] / (float)proccessCount;
 		for (int i=0; i < d3->outputWidth; i ++) d3->biases[i] = tempBiasesD3[i] / (float)proccessCount;
+
+		// Free memory
+		delete[] tempWeightsD1;
+		delete[] tempWeightsD2;
+		delete[] tempWeightsD3;
+		delete[] tempBiasesD1;
+		delete[] tempBiasesD2;
+		delete[] tempBiasesD3;
 	}
 
    MPI_Finalize();

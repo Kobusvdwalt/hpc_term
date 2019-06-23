@@ -20,16 +20,6 @@ bool Match(float* set1, float* set2, int count) {
 	return false;
 }
 
-__global__ void TrainKernel(GPUData gpuData, Network* network) {
-	int threadId = blockIdx.x * blockDim.x + threadIdx.x;
-	// for each training sample
-		// for each layer
-			// pick a neuron
-			// compute input and output
-			// sync threads
-		// sync threads
-}
-
 __global__ void TrainKernel(GPUData gpuData, Network** networkList) {
 	int networkId = blockIdx.x * blockDim.x + threadIdx.x;
 

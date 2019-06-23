@@ -61,12 +61,12 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 	LoadLabelData("../../DATASET/digits28/test/", testCount, testLabels);
 
 	// Layer 1
-	Dense* d1 = new Dense(width*height, 256);
-	Relu* r1 = new Relu(256);
+	Dense* d1 = new Dense(width*height, 1024);
+	Relu* r1 = new Relu(1024);
 	d1->Initialize(0.01, 0);
 
 	// Layer 2
-	Dense* d2 = new Dense(256, 256);
+	Dense* d2 = new Dense(512, 512);
 	Relu* r2 = new Relu(256);
 	d2->Initialize(0.01, 0);
 
@@ -76,12 +76,12 @@ void TrainCPU(int width, int height, int trainCount, int testCount) {
 	d3->Initialize(0.01, 0);
 
 	// Layer 4
-	Dense* d4 = new Dense(256, 256);
+	Dense* d4 = new Dense(10, 10);
 	Relu* r4 = new Relu(256);
 	d4->Initialize(0.01, 0);
 
 	// Layer 5
-	Dense* d5 = new Dense(256, 10);
+	Dense* d5 = new Dense(10, 10);
 	Sigmoid* s = new Sigmoid(10);
 	d5->Initialize(2, -1);
 

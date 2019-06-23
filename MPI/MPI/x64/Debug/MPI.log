@@ -9,6 +9,6 @@ c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\network\mseloss.h(19): warning 
 c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(9): warning C4018: '<': signed/unsigned mismatch
 c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(10): warning C4018: '<': signed/unsigned mismatch
 c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(100): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(105): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(101): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\kobus\desktop\hpc term\hpc_term\mpi\mpi\main.cpp(106): warning C4305: 'argument': truncation from 'double' to 'float'
   MPI.vcxproj -> C:\Users\Kobus\Desktop\HPC Term\hpc_term\MPI\x64\Debug\MPI.exe

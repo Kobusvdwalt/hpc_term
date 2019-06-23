@@ -190,7 +190,7 @@ void TrainGPU(int width, int height, int trainCount, int testCount) {
 }
 
 int main(int argc, char **argv) {
-	TrainGPU(28, 28, 6000, 1000);
+	TrainGPU(28, 28, 60000, 10000);
 	
 	printf("End\n");
 	return 0;
